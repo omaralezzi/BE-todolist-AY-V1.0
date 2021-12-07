@@ -7,39 +7,15 @@ app.set("view engine", "ejs"); // set up ejs for templating and view engine as e
 
 app.get("/", (req, res) => {
   let today = new Date();
-  let currentDay = today.getDay();
-  let day = "";
-  if (currentDay === 6 || currentDay === 0) {
-    day = "Weekend 😃";
-  } else {
-    day = "Weekday 😉";
-  }
-  switch (currentDay) {
-    case 0:
-      dayOfWeek = "Sunday";
-      break;
-    case 1:
-      dayOfWeek = "Monday";
-      break;
-    case 2:
-      dayOfWeek = "Tuesday";
-      break;
-    case 3:
-      dayOfWeek = "Wednesday";
-      break;
-    case 4:
-      dayOfWeek = "Thursday";
-      break;
-    case 5:
-      dayOfWeek = "Friday";
-      break;
-    case 6:
-      dayOfWeek = "Saturday";
-      break;
-  }
-  console.log(dayOfWeek);
+    let options = {
+        weekday: "long",
+        day: "numeric",
+        month: "long"
+    };
+    let day = today.toLocaleDateString("en-US", options);
+  
 
-  res.render("list", { kindOfDay: day, dayOfWeekName: dayOfWeek });
+  res.render("list", { kindOfDay: day});
 });
 
 app.listen(3000, () => {

@@ -7,8 +7,14 @@
     <title>To Do List</title>
   </head>
   <body>
-<h1 style="color: red">
-      The Datum for Today is : <%= kindOfDay %> !
+    <% if (kindOfDay === 'Weekend 😃') { %>
+    <h1 style="color: green">
+      it is <%= dayOfWeekName %> which is <%= kindOfDay %> !
     </h1>
+    <% } else { %>
+    <h1 style="color: red">
+      it is <%= dayOfWeekName %> which is <%= kindOfDay %> !
+    </h1>
+    <% } %>
   </body>
 </html>
